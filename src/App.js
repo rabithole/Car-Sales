@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
+import AdditionalFeature from './components/AdditionalFeature';
 import { buyItem, removeFeature } from './actions/actions';
 import Total from './components/Total';
 
@@ -44,7 +45,7 @@ const App = (props) => {
       </div>
       <div className="box">
         <AdditionalFeatures 
-          additionalFeatures={props.additionalFeatures} 
+          // additionalFeatures={props.additionalFeatures} 
           // buyItem={buyItem}
         />
         <Total car={props.car} additionalPrice={props.additionalPrice} />
