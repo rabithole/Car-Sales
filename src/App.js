@@ -1,8 +1,9 @@
- import React from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
+import { buyItem, removeFeature } from './actions/actions';
 import Total from './components/Total';
 
 const App = (props) => {
@@ -27,9 +28,13 @@ const App = (props) => {
     // dispatch an action here to remove an item
   };
 
-  const buyItem = item => {
-    // dipsatch an action here to add an item
-  };
+  props.buyItem();
+  // const buyItem = item => {
+  //   // dipsatch an action here to add an item
+  //   console.log('buy item')
+  //   // props.dispatch({ type: 'ADD_FEATURE', payload: item.id });
+  //   props.buyItem()
+  // };
 
   return (
     <div className="boxes">
@@ -38,7 +43,10 @@ const App = (props) => {
         <AddedFeatures car={props.car} />
       </div>
       <div className="box">
-        <AdditionalFeatures additionalFeatures={props.additionalFeatures} />
+        <AdditionalFeatures 
+          additionalFeatures={props.additionalFeatures} 
+          // buyItem={buyItem}
+        />
         <Total car={props.car} additionalPrice={props.additionalPrice} />
       </div>
     </div>
@@ -67,4 +75,14 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(App); // Calling a function twice is currying. 
+function mapDispatchToProps(dispatch) {
+  return {
+    buyItem: () => dispatch(buyItem()),
+    removeFeature: () => dispatch(removeFeature())
+  };
+}
+
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps
+)(App); // Calling a function twice is currying. Connect is an HOC.
