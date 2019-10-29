@@ -1,10 +1,10 @@
-import { buyItem, removeFeature } from '../actions/actions';
+// import { buyItem, removeFeature } from '../actions/actions';
 
 const initialState = 
 {
  additionalPrice: 0,
     car: {
-      price: 26395,
+      price: 56395,
       name: '2019 Ford Mustang',
       image:
         'https://cdn.motor1.com/images/mgl/0AN2V/s1/2019-ford-mustang-bullitt.jpg',
@@ -21,29 +21,30 @@ const initialState =
 export function reducer(state = initialState, action) { // Action === dispatch
   switch (action.type) { // Action is an object, it is passed through reducer to dispatch in the App.js file. 
     case 'ADD_FEATURE':
-      console.log(state)
-      return 
-      //   ...state,
-      //     {
-      //       todo: action.payload,
-      //       completed: false,
-      //       id: Date.now()
-      //     },
-      //   ];
+      console.log(state.car.price);
+      console.log(action);
+      return {
+        car: {
+          ...state.car,
+          price: state.car.price + action.payload.price,
+          features: [...state.car.features, action.payload]
+        },
+        additionalFeatures: state.additionalFeatures.filter(item => 
+          item.id !== action.payload.id
+          )
+      }
 
       case 'REMOVE_FEATURE':
-    //   console.log("action object:", action, 'state:', state)
-    //   return  state.map(item => {
-    //               if(action.payload === item.id){
-    //                 item.completed = !item.completed
-    //               }  
-    //               return item
-    //             });
-
-
-    //   case 'CLEAR_COMPLETED':
-    //   // console.log(state)
-    //   return state.filter(item => item.completed === false);
+       return {
+            ...state,
+            car: {
+              ...state.car,
+              price: state.car.price - action.payload.price,
+              features: state.car.features.filter(item => 
+                item.id !== action.payload.id)
+              },
+            additionalFeatures: [...state.additionalFeatures, action.payload]
+          };
          
     default:
       return state;
