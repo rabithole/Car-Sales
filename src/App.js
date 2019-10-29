@@ -59,7 +59,7 @@ function mapDispatchToProps(dispatch) {
   return {
     // AddedFeatures: props.dispatch,
     // removeFeatures: props.dispatch
-    buyItem: () => dispatch(buyItem()),
+    buyItem: (item) => dispatch(buyItem(item)),
     removeFeature: () => dispatch(removeFeature())
   };
 }
