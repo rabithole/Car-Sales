@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'; // Connect is a higher order function. 
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
@@ -14,7 +14,7 @@ const App = (props) => {
   const removeFeature = item => {
     // dispatch an action here to remove an item
   };
-
+  console.log(props)
   // props.buyItem();
   const buyItem = item => {
     // dipsatch an action here to add an item
@@ -67,4 +67,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps, 
   mapDispatchToProps
-)(App); // Calling a function twice is currying. Connect is an HOC.
+)(App); // Calling a function twice is currying. Connect is a HOC.
