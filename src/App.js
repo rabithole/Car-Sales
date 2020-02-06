@@ -30,6 +30,7 @@ const App = (props) => {
         <AddedFeatures 
           car={props.car} 
           removeFeature={props.removeFeatures}
+          additionalFeatures={props.additionalFeatures}
         />
       </div>
       <div className="box">
@@ -47,7 +48,7 @@ function mapStateToProps(state) {
 // store parameter in the mapStateToProps is our global state. Assigned in index file. 
 // mapStateToProps is assigning prop values to the component behind the scenes.
 // Each key below is a prop value 
-console.log(state.additionalPrice)
+console.log(state.additionalFeatures)
   return {
     additionalPrice: state.additionalPrice,
     car: state.car,
