@@ -21,7 +21,7 @@ const initialState =
 export function reducer(state = initialState, action) { // Action === dispatch
   switch (action.type) { // Action is an object, it is passed through reducer to dispatch in the App.js file. 
     case 'ADD_FEATURE':
-      console.log(state)
+      // console.log(state)
       return 
       //   ...state,
       //     {
